@@ -89,14 +89,12 @@ class MainActivity : AppCompatActivity() {
         imageView = findViewById(R.id.image_header)
         resultTextView = findViewById(R.id.text_wynik)
 
-        // 🔹 1. Inicjalizacja interpretera TFLite
+        // Inicjalizacja interpretera TFLite
         try {
             tflite = Interpreter(loadModelFile())
-            // Dodajmy log, jeśli się uda
             android.util.Log.d("TFLite", "Model załadowany poprawnie!")
         } catch (e: Exception) {
             e.printStackTrace()
-            // To wypisze dokładny błąd w Logcat (na dole Android Studio)
             android.util.Log.e("TFLite", "Błąd ładowania: ${e.message}")
             Toast.makeText(this, "Błąd modelu: ${e.message}", Toast.LENGTH_LONG).show()
         }
@@ -110,12 +108,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         predictBtn.setOnClickListener {
-            // 🔹 2. Pobranie Bitmapy z ImageView
+            // Pobranie Bitmapy z ImageView
 
             if (!isImageLoaded) {
-                // Oraz krótki dymek
                 Toast.makeText(this, "Wybierz najpierw zdjęcie", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener // Przerwij działanie funkcji
+                return@setOnClickListener // Przerwanie dzialania
             }
 
             val drawable = imageView.drawable
@@ -128,22 +125,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // 🔹 Logika klasyfikacji
-    // 🔹 Logika klasyfikacji
+    // Logika klasyfikacji
     private fun classifyImage(originalBitmap: Bitmap) {
-        // 1. Skalowanie obrazu do 128x128
+        // Skalowanie obrazu
         val resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, INPUT_SIZE, INPUT_SIZE, true)
 
-        // 2. Przygotowanie ByteBuffer (wejście modelu)
+        // Przygotowanie ByteBuffer
         val inputBuffer = convertBitmapToByteBuffer(resizedBitmap)
 
-        // 3. Przygotowanie tablicy na wynik
+        // Przygotowanie tablicy na wynik
         val output = Array(1) { FloatArray(classes.size) }
 
-        // 4. Uruchomienie inferencji
         tflite.run(inputBuffer, output)
 
-        // 5. Interpretacja wyników
+        // Interpretacja wyników
         val probabilities = output[0]
         var maxPos = 0
         var maxConfidence = 0.0f
@@ -158,7 +153,7 @@ class MainActivity : AppCompatActivity() {
         val rawClass = classes[maxPos] // Surowa nazwa klasy, np. "Papier"
         val confidencePercent = maxConfidence * 100 // Zamiana 0.95 na 95.0
 
-        // 🔹 6. Logika instrukcji i kolorów
+        // Logika instrukcji i kolorów
         var instruction = ""
         var colorCode = 0xFF000000.toInt() // Domyślny czarny
 
@@ -196,8 +191,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // 🔹 7. Budowanie tekstu końcowego z procentami
-        // %.1f%% oznacza: jedna cyfra po przecinku i znak procenta na końcu
+        // Końcowy wynik
         val finalResult = "$instruction\nPewność: %.1f%%".format(confidencePercent)
 
         // Ustawienie tekstu i koloru
@@ -207,7 +201,6 @@ class MainActivity : AppCompatActivity() {
         resultTextView.visibility = View.VISIBLE
     }
 
-    // 🔹 Helper: Ładowanie pliku z assets
     @Throws(IOException::class)
     private fun loadModelFile(): ByteBuffer {
         val fileDescriptor: AssetFileDescriptor = assets.openFd(MODEL_PATH)
@@ -218,9 +211,7 @@ class MainActivity : AppCompatActivity() {
         return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength)
     }
 
-    // 🔹 Helper: Konwersja Bitmap -> ByteBuffer (PREPROCESSING)
     private fun convertBitmapToByteBuffer(bitmap: Bitmap): ByteBuffer {
-        // Alokacja pamięci:
         // 4 bajty na float * 128 (wys) * 128 (szer) * 3 (kanały RGB)
         val byteBuffer = ByteBuffer.allocateDirect(4 * INPUT_SIZE * INPUT_SIZE * 3)
         byteBuffer.order(ByteOrder.nativeOrder())
@@ -238,10 +229,7 @@ class MainActivity : AppCompatActivity() {
                 val g = (input shr 8 and 0xFF).toFloat()
                 val b = (input and 0xFF).toFloat()
 
-                // ⚠️ KLUCZOWE DLA RESNET V2 ⚠️
-                // Pythonowy preprocess_input dla ResNetV2 robi: (x - 127.5) / 127.5
                 // Dzięki temu wartości są w przedziale [-1, 1]
-
                 byteBuffer.putFloat((r - 127.5f) / 127.5f)
                 byteBuffer.putFloat((g - 127.5f) / 127.5f)
                 byteBuffer.putFloat((b - 127.5f) / 127.5f)
@@ -252,7 +240,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // Zwalnianie zasobów modelu
         if (::tflite.isInitialized) {
             tflite.close()
         }
