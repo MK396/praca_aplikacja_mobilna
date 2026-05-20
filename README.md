@@ -7,15 +7,12 @@ Projekt został stworzony jako dodatek do pracy inżynierskiej, której tematem 
 
 ## 📸 Zrzuty ekranu
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/1afa7b3c-516b-4a6b-b82a-13aa1ece2cb0" width="30%" alt="Ekran główny aplikacji" />
-  <img src="https://github.com/user-attachments/assets/a1352d33-2105-4ac1-9511-6f27436c91b4" width="30%" alt="Ekran po dodaniu zdjęcia" />
-</p>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/24df70b1-2d19-4fcf-aead-9aa34b80f8d6" width="30%" alt="Klasyfikacja" />
-  <img src="https://github.com/user-attachments/assets/5d59a9be-81ad-485f-9707-df86814dfb4d" width="30%" alt="Klasyfikacja" />
-</p>
+<div style="display: flex; justify-content: center; gap: 10px; max-width: 1000px; margin: 0 auto;">
+  <img src="https://github.com/user-attachments/assets/1afa7b3c-516b-4a6b-b82a-13aa1ece2cb0" style="width: 23%; object-fit: contain;" alt="Ekran główny aplikacji" />
+  <img src="https://github.com/user-attachments/assets/a1352d33-2105-4ac1-9511-6f27436c91b4" style="width: 23%; object-fit: contain;" alt="Ekran po dodaniu zdjęcia" />
+  <img src="https://github.com/user-attachments/assets/24df70b1-2d19-4fcf-aead-9aa34b80f8d6" style="width: 23%; object-fit: contain;" alt="Klasyfikacja - Przykład 1" />
+  <img src="https://github.com/user-attachments/assets/5d59a9be-81ad-485f-9707-df86814dfb4d" style="width: 23%; object-fit: contain;" alt="Klasyfikacja - Przykład 2" />
+</div>
 
 ## 🚀 Funkcjonalności
 
