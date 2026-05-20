@@ -3,7 +3,7 @@
 Mobilna wersja systemu do segregacji odpadów, działająca na systemie Android. Aplikacja wykorzystuje wbudowany model sieci neuronowej (**TensorFlow Lite**)
 do rozpoznawania odpadów w czasie rzeczywistym, bez konieczności dostępu do Internetu.
 
-Projekt został stworzony jako dodatek do pracy inżynierskiej, której tematem była Aplikacja webowa do segregacji odpadów i edukacji ekologicznej
+Projekt został stworzony jako dodatek do pracy inżynierskiej, której tematem była Aplikacja webowa do segregacji odpadów i edukacji ekologicznej.
 
 ## 📸 Zrzuty ekranu
 
@@ -42,7 +42,7 @@ git clone https://github.com/MK396/praca_aplikacja_mobilna.git
 2. Kliknij kilka razy w numer nakładki systemowej (w telefonach xiaomi to wersja MIUI)
 3. Pojawi się komunikat, że zostałeś programistą
 4. Znajdź dodatkowe ustawienia i wejdź w opcje programistyczne
-5. Włącz opcję Włącz opcję **Debugowanie USB**
+5. Włącz opcję **Debugowanie USB**
 6. Podłącz telefon do komputera kablem USB.
 7. Na ekranie telefonu pojawi się komunikat "Zezwalać na debugowanie USB?". Zaznacz **Zezwól**.
 
@@ -57,7 +57,7 @@ git clone https://github.com/MK396/praca_aplikacja_mobilna.git
 Jeśli nie chcesz korzystać z Android Studio, możesz zainstalować gotową aplikację bezpośrednio na telefonie.
 
 1.  Pobierz plik `rozpoznawanie_odpadów.apk`, który znajduje się w folderze apk.
-2.  Prześlij plik na telefon (przez kabel USB, e-mail lub Google Drive).
+2.  Prześlij plik na telefon.
 3.  W telefonie otwórz menedżer plików i kliknij w pobrany plik.
 4.  Jeśli telefon zapyta o zgodę na instalację z nieznanych źródeł – **zezwól**.
 5.  Po zakończeniu instalacji ikona aplikacji pojawi się w menu telefonu.
