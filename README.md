@@ -1,11 +1,11 @@
-# 📱 Aplikacja Mobilna do wspomagania segregacji odpadów
+# Aplikacja mobilna do wspomagania segregacji odpadów
 
 Mobilna wersja systemu do segregacji odpadów, działająca na systemie Android. Aplikacja wykorzystuje wbudowany model sieci neuronowej (**TensorFlow Lite**)
 do rozpoznawania odpadów w czasie rzeczywistym, bez konieczności dostępu do Internetu.
 
 Projekt został stworzony jako dodatek do pracy inżynierskiej, której tematem była Aplikacja webowa do segregacji odpadów i edukacji ekologicznej.
 
-## 📸 Zrzuty ekranu
+## Zrzuty ekranu
 
 <div style="display: flex; justify-content: center; gap: 10px; max-width: 1000px; margin: 0 auto;">
   <img src="https://github.com/user-attachments/assets/1afa7b3c-516b-4a6b-b82a-13aa1ece2cb0" style="width: 23%; object-fit: contain;" alt="Ekran główny aplikacji" />
@@ -14,14 +14,14 @@ Projekt został stworzony jako dodatek do pracy inżynierskiej, której tematem 
   <img src="https://github.com/user-attachments/assets/5d59a9be-81ad-485f-9707-df86814dfb4d" style="width: 23%; object-fit: contain;" alt="Klasyfikacja - Przykład 2" />
 </div>
 
-## 🚀 Funkcjonalności
+## Funkcjonalności
 
 * **Rozpoznawanie obrazu:** Klasyfikacja odpadów na podstawie zdjęcia z kamery lub galerii.
 * **Działanie Offline:** Model predykcyjny (ResNet50V2) jest zaszyty wewnątrz aplikacji (`lite_model_v2.tflite`).
 * **Natychmiastowy wynik:** Użytkownik otrzymuje informację o tym jakiego rodzaju jest przesłany odpad (np. Papier, Szkło) oraz do którego koloru pojemnika go wyrzucić.
 * **Wybieranie i robienie zdjęć:** Użytkownik ma możliwość przesłania zdjęcia z galerii lub zrobienia go bezpośrednio w aplikacji.
 
-## ⚙️ Instrukcja uruchomienia
+## Instrukcja uruchomienia
 
 Aby uruchomić projekt lokalnie, wykonaj poniższe kroki:
 
